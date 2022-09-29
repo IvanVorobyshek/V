@@ -1,0 +1,26 @@
+<?php
+/** @var \Voronin\Cars\Block\Template $block */
+//var_dump($block->getOutData());
+$cars = $block->getOutData();
+?>
+
+
+<form id="car_form" method="post" action="<?= $block->getUpdateUrl($cars['car_id']) ?>">
+    <h1 style="display:inline;">Car Update</h1>
+
+    <hr>
+    <label>Car Model</label><input id="car_model" type="text" name="car_model" value="<?= $block->escapeHtml($cars['car_model']) ?>"/>
+    <br />
+    <label>Car Manufacturer</label><input id="car_manufacturer" type="text" name="car_manufacturer" value="<?= $block->escapeHtml($cars['car_manufacturer']) ?>"/>
+    <br />
+    <label>Car Release Year</label><input id="car_release_year" type="text" name="car_release_year" value="<?= $block->escapeHtml($cars['car_release_year']) ?>"/>
+    <br />
+    <label>Car Description</label><input id="car_description" type="text" name="car_description" value="<?= $block->escapeHtml($cars['car_description']) ?>"/>
+    <br />
+
+    <br />
+    <br />
+
+    <a href="<?= $block->getCancelUrl() ?>" class="btn_a">CANCEL</a>
+    <input class="btn-r" type="submit" id="Update" name="Update" value="UPDATE"/>
+</form>

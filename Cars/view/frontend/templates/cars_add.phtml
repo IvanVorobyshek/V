@@ -1,0 +1,28 @@
+<?php
+
+?>
+<form id="car_form" method="post" action="<?= $block->getSaveUrl() ?>">
+    <h1 style="display:inline;">Car Add</h1>
+
+    <hr>
+<!--    <label>Car ID</label><input id="car_id" type="text" name="car_id"/>-->
+<!--    <br />-->
+    <label>Car Model</label><input id="car_model" type="text" name="car_model"/>
+    <br />
+    <label>Car Manufacturer</label><input id="car_manufacturer" type="text" name="car_manufacturer"/>
+    <br />
+    <label>Car Release Year</label><input id="car_release_year" type="text" name="car_release_year"/>
+    <br />
+    <label>Car Description</label><input id="car_description" type="text" name="car_description"/>
+    <br />
+<!--    <label>Car Created At</label><input id="car_created_at" type="text" name="car_created_at"/>-->
+<!--    <br />-->
+<!--    <label>Car Updated At</label><input id="car_updated_at" type="text" name="car_updated_at"/>-->
+<!--    <br />-->
+
+    <br />
+    <br />
+
+    <a href="<?= $block->getCancelUrl() ?>" class="btn_a">CANCEL</a>
+    <input class="btn-r" type="submit" id="Save" name="Save" value="SAVE"/>
+</form>
