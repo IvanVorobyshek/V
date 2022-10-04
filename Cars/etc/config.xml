@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <Voronin_Cars_Section_ID>
+            <Voronin_Cars_Group_ID>
+                <Voronin_Cars_Enabled_ID>1</Voronin_Cars_Enabled_ID>
+            </Voronin_Cars_Group_ID>
+        </Voronin_Cars_Section_ID>
+    </default>
+</config>

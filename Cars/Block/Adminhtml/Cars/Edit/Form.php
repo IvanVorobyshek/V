@@ -109,19 +109,6 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
 //                'disabled' => $model ? true : false,
             ]
         );
-//        $fieldset->addField(
-//            'approved',
-//            'select',
-//            [
-//                'name' => 'approved',
-//                'label' => __('Approved'),
-//                'id' => 'approved',
-//                'title' => __('Approved'),
-//                'class' => 'required-entry approved',
-//                'values' => $this->_approved->toOptionArray(),
-//                'required' => true,
-//            ]
-//        );
         $form->setValues($model ? $model->getData() : '');
         $form->setUseContainer(true);
         $this->setForm($form);

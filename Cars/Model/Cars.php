@@ -1,9 +1,10 @@
 <?php
 namespace Voronin\Cars\Model;
 
-class Cars extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface
+class Cars extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface,
+    \Voronin\Cars\Api\CarsInterface
 {
-    const CACHE_TAG = 'voronin_cars_cars';
+//    const CACHE_TAG = 'voronin_cars_cars';
 
     /**
      * Model cache tag for clear cache in after save and after delete

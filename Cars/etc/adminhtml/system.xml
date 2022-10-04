@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+                <tab id="Voronin_Modules_ID" translate="label" sortOrder="1">
+                    <label>Voronin Modules</label>
+                </tab>
+
+                <section id="Voronin_Cars_Section_ID" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10" translate="label">
+                    <label>Cars module</label>
+                    <tab>Voronin_Modules_ID</tab>
+                    <resource>Voronin_Cars::path_to_the_acl_resource</resource>
+
+                    <group id="Voronin_Cars_Group_ID" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Cars module</label>
+                        <comment>You can enable/disable the module.</comment>
+
+                        <field id="Voronin_Cars_Enabled_ID" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" type="select">
+                            <label>Enabled</label>
+                            <comment>Select Yes or No.</comment>
+                            <tooltip>Select Yes to enable the module, No to disable.</tooltip>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+
+                    </group>
+                </section>
+    </system>
+</config>
+<!--<tab id="A_UNIQUE_ID" translate="label" class="a-custom-css-class-to-style-this-tab" sortOrder="10">-->
+<!--<label>A meaningful label</label>-->
+<!--</tab>-->
+
+<!--<section id="A_UNIQUE_SECTION_ID" showInDefault="1" showInWebsite="0" showInStore="1" sortOrder="10" translate="label">-->
+<!--<label>A meaningful section label</label>-->
+<!--<tab>A_UNIQUE_ID</tab>-->
+<!--<resource>Voronin_Cars::path_to_the_acl_resource</resource>-->
+
+<!--<group id="A_UNIQUE_GROUP_ID" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="1">-->
+<!--    <label>A meaningful group label</label>-->
+<!--    <comment>An additional comment helping users to understand the effect when configuring the fields defined in this group.</comment>-->
+
+<!--    <field id="A_UNIQUE_FIELD_ID" translate="label" sortOrder="10" showInDefault="0" showInWebsite="0" showInStore="1" type="select">-->
+<!--        <label>Feature Flag Example</label>-->
+<!--        <comment>This field is an example for a basic yes or no select.</comment>-->
+<!--        <tooltip>Usually these kinds of fields are used to enable or disable a given feature. Other fields might be dependent to this and will only appear if this field is set to yes.</tooltip>-->
+<!--        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
+<!--    </field>-->
+
+<!--    <field id="ANOTHER_UNIQUE_FIELD_ID" translate="label" sortOrder="10" showInDefault="0" showInWebsite="0" showInStore="1" type="text">-->
+<!--        <label>A meaningful field label</label>-->
+<!--        <comment>A descriptive text explaining this configuration field.</comment>-->
+<!--        <tooltip>Another possible frontend element that also can be used to describe the meaning of this field. Will be displayed as a small icon beside the field.</tooltip>-->
+<!--        <validate>required-entry no-whitespace</validate> &lt;!&ndash; Field is required and must not contain any whitespace. &ndash;&gt;-->
+<!--        <if_module_enabled>Voronin_Cars</if_module_enabled>-->
+<!--        <depends> &lt;!&ndash; This field will only be visible if the field with the id A_UNIQUE_FIELD_ID is set to value 1 &ndash;&gt;-->
+<!--            <field id="A_UNIQUE_FIELD_ID">1</field>-->
+<!--        </depends>-->
+<!--    </field>-->
+<!--</group>-->
+<!--</section>-->

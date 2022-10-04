@@ -8,6 +8,7 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
+use Voronin\Cars\Model\Config;
 
 class Index extends Action implements HttpGetActionInterface
 {
@@ -17,14 +18,21 @@ class Index extends Action implements HttpGetActionInterface
     protected PageFactory $_pageFactory;
 
     /**
+     * @var
+     */
+    private $config;
+
+    /**
      * @param Context $context
      * @param PageFactory $pageFactory
      */
     public function __construct(
         Context $context,
-        PageFactory $pageFactory
+        PageFactory $pageFactory,
+        Config $config
     ) {
         $this->_pageFactory = $pageFactory;
+        $this->config = $config;
         return parent::__construct($context);
     }
 
@@ -33,6 +41,13 @@ class Index extends Action implements HttpGetActionInterface
      */
     public function execute()
     {
-        return $this->_pageFactory->create();
+        if ($this->config->isEnabled()){
+            return $this->_pageFactory->create();
+        } else {
+            //redirect to the main page
+            $redirect = $this->resultRedirectFactory->create();
+            $redirect->setPath('/');
+            return $redirect;
+        }
     }
 }

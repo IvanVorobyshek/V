@@ -138,11 +138,13 @@
         <actionsColumn name="Edit" class="Voronin\Cars\Ui\Component\Category\Listing\Column\Actions" sortOrder="500">
             <settings>
                 <indexField>car_id</indexField>
+                <label translate="true">Edit</label>
             </settings>
         </actionsColumn>
         <actionsColumn name="Delete" class="Voronin\Cars\Ui\Component\Category\Listing\Column\Delete" sortOrder="501">
             <settings>
                 <indexField>car_id</indexField>
+                <label translate="true">Delete</label>
             </settings>
         </actionsColumn>
     </columns>

@@ -18,11 +18,11 @@ class Edit extends Action
 
     public function __construct(
         Context $context,
-        PageFactory $rawFactory,
+        PageFactory $pageFactory,
         CarsFactory $_carsFactory,
         \Magento\Framework\Registry $coreRegistry
     ){
-        $this->pageFactory = $rawFactory;
+        $this->pageFactory = $pageFactory;
         $this->_carsFactory = $_carsFactory;
         $this->coreRegistry = $coreRegistry;
         parent::__construct($context);

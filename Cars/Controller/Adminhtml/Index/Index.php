@@ -22,9 +22,9 @@ class Index extends Action implements HttpGetActionInterface
      */
     public function __construct(
         Context $context,
-        PageFactory $rawFactory
+        PageFactory $PageFactory
     ) {
-        $this->pageFactory = $rawFactory;
+        $this->pageFactory = $PageFactory;
 
         parent::__construct($context);
     }
@@ -38,7 +38,6 @@ class Index extends Action implements HttpGetActionInterface
     {
         $resultPage = $this->pageFactory->create();
         $resultPage->setActiveMenu('Magento_Catalog::catalog_products');
-//        $resultPage->getConfig()->getTitle()->prepend(__('Admin Grid Tutorial Example'));
         $resultPage->getConfig()->getTitle()->prepend(__('Cars'));
         return $resultPage;
     }
