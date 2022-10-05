@@ -7,7 +7,6 @@ use Magento\Cms\Model\Wysiwyg\Config;
 use Magento\Framework\Data\FormFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Registry;
-use Voronin\Cars\Model\Source\Approved;
 
 /**
  * Class Form
@@ -21,16 +20,10 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
     protected $_systemStore;
 
     /**
-     * @var Approved
-     */
-    protected $_approved;
-
-    /**
      * @param Context $context
      * @param Registry $registry
      * @param FormFactory $formFactory
      * @param Config $wysiwygConfig
-     * @param Approved $approved
      * @param array $data
      */
     public function __construct(
@@ -38,11 +31,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         Registry $registry,
         FormFactory $formFactory,
         Config $wysiwygConfig,
-        Approved $approved,
         array $data = []
     ) {
         $this->_wysiwygConfig = $wysiwygConfig;
-        $this->_approved = $approved;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 

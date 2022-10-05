@@ -135,7 +135,7 @@
                 <label translate="true">Updated</label>
             </settings>
         </column>
-        <actionsColumn name="Edit" class="Voronin\Cars\Ui\Component\Category\Listing\Column\Actions" sortOrder="500">
+        <actionsColumn name="Edit" class="Voronin\Cars\Ui\Component\Category\Listing\Column\Edit" sortOrder="500">
             <settings>
                 <indexField>car_id</indexField>
                 <label translate="true">Edit</label>
