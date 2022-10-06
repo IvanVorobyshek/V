@@ -38,7 +38,7 @@ class Edit extends Action
         if ($rowId){
             $rowData = $this->_carsFactory->create()->load($rowId);
             if(!$rowData->getId()){
-                $this->messageManager->addError(__('Car data no longer exist.'));
+                $this->messageManager->addErrorMessage(__('Car data no longer exist.'));
                 $this->_redirect('voronin_cars/index/index');
             }
         }

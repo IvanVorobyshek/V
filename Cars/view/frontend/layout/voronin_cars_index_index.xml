@@ -9,7 +9,6 @@
             </action>
         </referenceBlock>
         <referenceContainer name="content">
-<!--            <block class="Voronin\Cars\Block\Cars" name="Voronin_Cars" template="Voronin_Cars::cars.phtml">-->
             <block name="Voronin_Cars" template="Voronin_Cars::cars.phtml">
                 <arguments>
                     <argument name="view_model_cars" xsi:type="object">Voronin\Cars\ViewModel\MyViewModel</argument>

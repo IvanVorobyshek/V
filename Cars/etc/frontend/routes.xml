@@ -6,8 +6,5 @@
         <route id="Voronin_Cars" frontName="cars">
             <module name="Voronin_Cars" />
         </route>
-        <!-- <route id="Voronin_Cars_Add" frontName="cars_add">
-            <module name="Voronin_Cars" />
-        </route> -->
     </router>
 </config>

@@ -5,21 +5,26 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Voronin\Cars\Model\CarsFactory;
+use Voronin\Cars\Model\ResourceModel\Cars as CarsResourceModel;
 use Voronin\Cars\Model\Config;
 
 class Index extends Action implements HttpGetActionInterface
 {
     private CarsFactory $_carsFactory;
 
+    private CarsResourceModel $carsResourceModel;
+
     private $config;
 
     public function __construct(
         Context $context,
         CarsFactory $carsFactory,
+        CarsResourceModel $carsResourceModel,
         Config $config
     ) {
         $this->_carsFactory = $carsFactory;
         $this->config = $config;
+        $this->carsResourceModel = $carsResourceModel;
         parent::__construct($context);
     }
 
@@ -30,9 +35,8 @@ class Index extends Action implements HttpGetActionInterface
 
             try {
                 $model = $this->_carsFactory->create();
-                $model->load($params['id']);
-//            var_dump($mymodel->getData());
-                $model->delete();
+                $this->carsResourceModel->load($model, $params['id']);
+                $this->carsResourceModel->delete($model);
                 $this->messageManager->addSuccessMessage(__('Car data was deleted from DB.'));
             } catch (\Exception $e) {
                 $this->messageManager->addErrorMessage(__('Something is wrong! Can\'t delete car data from DB!'));

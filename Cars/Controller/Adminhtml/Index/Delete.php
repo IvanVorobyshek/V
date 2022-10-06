@@ -27,7 +27,7 @@ class Delete extends Action
         try {
             $deleteData = $this->_carsFactory->create()->load($carId);
             $deleteData->delete();
-            $this->messageManager->addSuccess(__('Car data has been successfully deleted.'));
+            $this->messageManager->addSuccessMessage(__('Car data has been successfully deleted.'));
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage(__('Something is wrong! Can\'t delete data from DB!'));
         }
