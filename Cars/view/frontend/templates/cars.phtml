@@ -1,8 +1,8 @@
 <?php
 /** @var \Voronin\Cars\Block\Template $block */
-//var_dump($block->getAllCars()->getData());
-//echo gettype($block->getAllCars());
-$cars = $block->getAllCars();
+/** @var $viewModelCars \Voronin\Cars\ViewModel\MyViewModel */
+$viewModelCars = $block->getViewModelCars();
+$cars = $viewModelCars->getAllCars();
 ?>
 
 <?php
@@ -29,8 +29,8 @@ if (count($cars) > 0): ?>
             <td><?= $car->getCarReleaseYear() ?></td>
             <td><?= $car->getCarCreatedAt() ?></td>
             <td><?= $car->getCarUpdatedAt() ?></td>
-            <td><a href="<?= $block->escapeUrl($block->getEditUrl($car->getId())) ?>" class="btn_a action primary" style="color: #B2D0F7"><?= __("Edit") ?></a></td>
-            <td><a href="<?= $block->escapeUrl($block->getDeleteUrl($car->getId())) ?>" class="btn_a action primary" style="color: black"><?= __("Delete") ?></a></td>
+            <td><a href="<?= $block->escapeUrl($block->getUrl('cars/edit/index/id/' . $car->getId())) ?>" class="btn_a action primary" style="color: #B2D0F7"><?= __("Edit") ?></a></td>
+            <td><a href="<?= $block->escapeUrl($block->getUrl('cars/delete/index/id/' . $car->getId())) ?>" class="btn_a action primary" style="color: black"><?= __("Delete") ?></a></td>
         </tr>
     <?php endforeach; ?>
 </table>
@@ -38,5 +38,5 @@ if (count($cars) > 0): ?>
     <h1><?= __("This is no car to display.") ?></h1>
 <?php endif;?>
     <hr />
-<a href="<?= $block->getAddUrl()?>" class="btn_a action primary">Add car</a>
+<a href="<?= $block->getUrl('cars/add') ?>" class="btn_a action primary">Add car</a>
 

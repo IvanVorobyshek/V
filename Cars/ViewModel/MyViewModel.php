@@ -1,22 +1,41 @@
 <?php
-declare(strict_types=1);
 
 namespace Voronin\Cars\ViewModel;
 
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\FrameWork\View\LayoutInterface;
+use Voronin\Cars\Model\ResourceModel\Cars\Collection;
 
 class MyViewModel implements ArgumentInterface
 {
-    private $layout;
+    /**
+     * @var Collection
+     */
+    private Collection $collection;
 
-    public function __construct(LayoutInterface $layout)
+    public function __construct(Collection $collection)
     {
-        $this->layout = $layout;
+        $this->collection = $collection;
     }
 
-    public function getHandles(): array
+    /**
+     * @return Collection
+     */
+    public function getAllCars(): Collection
     {
-        return $this->layout->getUpdate()->getHandles();
+        return $this->collection;
     }
+
+//    private $layout;
+//
+//    public function __construct(LayoutInterface $layout)
+//    {
+//        $this->layout = $layout;
+//    }
+//
+//    public function getHandles(): array
+//    {
+//        return $this->layout->getUpdate()->getHandles();
+//    }
+
 }

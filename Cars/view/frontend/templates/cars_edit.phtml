@@ -1,11 +1,12 @@
 <?php
 /** @var \Voronin\Cars\Block\Template $block */
-//var_dump($block->getOutData());
-$cars = $block->getOutData();
+/** @var $viewModelCarsEdit \Voronin\Cars\ViewModel\MyViewModelCarsEdit */
+$viewModelCarsEdit = $block->getViewModelCarsEdit();
+$cars = $viewModelCarsEdit->getOutData();
 ?>
 
 
-<form id="car_form" method="post" action="<?= $block->getUpdateUrl($cars['car_id']) ?>">
+<form id="car_form" method="post" action="<?= $block->getUrl('cars/update/index/id/' . $cars['car_id']) ?>">
     <h1 style="display:inline;">Car Update</h1>
 
     <hr>
@@ -21,6 +22,6 @@ $cars = $block->getOutData();
     <br />
     <br />
 
-    <a href="<?= $block->getCancelUrl() ?>" class="btn_a action-primary">CANCEL</a>
+    <a href="<?= $block->getUrl('cars') ?>" class="btn_a action-primary">CANCEL</a>
     <input class="action-primary" type="submit" id="Update" name="Update" value="UPDATE"/>
 </form>

@@ -1,7 +1,7 @@
 <?php
 
 ?>
-<form id="car_form" method="post" action="<?= $block->getSaveUrl() ?>">
+<form id="car_form" method="post" action="<?= $block->getUrl('cars/save') ?>">
     <h1 style="display:inline;">Car Add</h1>
 
     <hr>
@@ -16,6 +16,6 @@
     <br />
     <br />
 
-    <a href="<?= $block->getCancelUrl() ?>" class="btn_a action-primary">CANCEL</a>
+    <a href="<?= $block->getUrl('cars') ?>" class="btn_a action-primary">CANCEL</a>
     <input class="action-primary" type="submit" id="Save" name="Save" value="SAVE"/>
 </form>
