@@ -1,6 +1,9 @@
 <?php
 namespace Voronin\Cars\Model\ResourceModel\Cars;
 
+use Voronin\Cars\Model\Cars;
+use Voronin\Cars\Model\ResourceModel\Cars as CarsResource;
+
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     protected $_idFieldName = 'car_id';
@@ -14,6 +17,6 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected function _construct()
     {
-        $this->_init('Voronin\Cars\Model\Cars', 'Voronin\Cars\Model\ResourceModel\Cars');
+        $this->_init(Cars::class, CarsResource::class);
     }
 }

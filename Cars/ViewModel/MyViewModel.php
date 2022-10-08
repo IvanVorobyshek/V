@@ -25,17 +25,4 @@ class MyViewModel implements ArgumentInterface
     {
         return $this->collection;
     }
-
-//    private $layout;
-//
-//    public function __construct(LayoutInterface $layout)
-//    {
-//        $this->layout = $layout;
-//    }
-//
-//    public function getHandles(): array
-//    {
-//        return $this->layout->getUpdate()->getHandles();
-//    }
-
 }
