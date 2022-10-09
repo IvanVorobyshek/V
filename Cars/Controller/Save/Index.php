@@ -3,6 +3,7 @@ namespace Voronin\Cars\Controller\Save;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\Controller\Result\ForwardFactory;
 use Voronin\Cars\Model\Cars;
 use Voronin\Cars\Model\Config;
 use Voronin\Cars\Model\CarsFactory;
@@ -10,12 +11,29 @@ use Voronin\Cars\Model\ResourceModel\Cars as CarsResourceModel;
 
 class Index extends Action
 {
+    /**
+     * @var Cars
+     */
     private Cars $cars;
 
+    /**
+     * @var CarsFactory
+     */
     private CarsFactory $_carsFactory;
 
+    /**
+     * @var CarsResourceModel
+     */
     private CarsResourceModel $carsResourceModel;
 
+    /**
+     * @var ForwardFactory
+     */
+    protected ForwardFactory $_forwardFactory;
+
+    /**
+     * @var Config
+     */
     private $config;
 
     /**
@@ -28,12 +46,14 @@ class Index extends Action
         Cars $cars,
         CarsFactory $carsFactory,
         CarsResourceModel $carsResourceModel,
+        ForwardFactory $forwardFactory,
         Config $config
     ) {
         $this->cars = $cars;
         $this->_carsFactory = $carsFactory;
         $this->carsResourceModel = $carsResourceModel;
         $this->config = $config;
+        $this->_forwardFactory = $forwardFactory;
         parent::__construct($context);
     }
 
@@ -49,7 +69,11 @@ class Index extends Action
 //                $model = $this->_carsFactory->create();
 //                $model->setData($params);
 //                $this->carsResourceModel->save($model);
-
+//                $params['car_id'] = '38';
+//                unset($params['Save']);
+//                unset($params['form_key']);
+//                var_dump($params);
+//                exit();
                 $model = $this->cars->setData($params);
                 $this->carsResourceModel->save($model);
                 $this->messageManager->addSuccessMessage(__('Wow! Data was added to DB.'));
@@ -60,12 +84,11 @@ class Index extends Action
             //redirect to cars page
             $redirect = $this->resultRedirectFactory->create();
             $redirect->setPath('cars');
-            return $redirect;
         } else {
-            //redirect to the main page
-            $redirect = $this->resultRedirectFactory->create();
-            $redirect->setPath('/');
+            //404
+            $redirect = $this->_forwardFactory->create()->forward('defaultNoRoute');
             return $redirect;
         }
+        return $redirect;
     }
 }

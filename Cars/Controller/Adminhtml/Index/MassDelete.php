@@ -28,9 +28,9 @@ class MassDelete extends \Magento\Backend\App\Action
                 $deleteData = $this->_carsFactory->create()->load($selectedId);
                 $deleteData->delete();
             }
-            $this->messageManager->addSuccess(__('Car data has been successfully deleted.'));
+            $this->messageManager->addSuccessMessage(__('Car data has been successfully deleted.'));
         } catch (\Exception $e) {
-            $this->messageManager->addError(__($e->getMessage()));
+            $this->messageManager->addErrorMessage(__($e->getMessage()));
         }
         $this->_redirect('voronin_cars/index/index');
     }

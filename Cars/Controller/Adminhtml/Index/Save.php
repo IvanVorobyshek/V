@@ -37,14 +37,14 @@ class Save extends \Magento\Backend\App\Action
         try {
             $rowData = $this->_carsFactory->create()->load($carId);
             if (!$rowData->getId() && $carId) {
-                $this->messageManager->addError(__('Car data no longer exist.'));
+                $this->messageManager->addErrorMessage(__('Car data no longer exist.'));
                 $this->_redirect('voronin_cars/index/index');
             }
             $rowData->setData($data);
             $rowData->save();
-            $this->messageManager->addSuccess(__('Car data has been successfully saved.'));
+            $this->messageManager->addSuccessMessage(__('Car data has been successfully saved.'));
         } catch (\Exception $e) {
-            $this->messageManager->addError(__($e->getMessage()));
+            $this->messageManager->addErrorMessage(__($e->getMessage()));
         }
         $this->_redirect('voronin_cars/index/index');
     }

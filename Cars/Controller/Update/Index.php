@@ -4,27 +4,41 @@ namespace Voronin\Cars\Controller\Update;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 //use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Controller\Result\ForwardFactory;
 use Voronin\Cars\Model\CarsFactory;
 use Voronin\Cars\Model\Config;
 use Voronin\Cars\Model\ResourceModel\Cars as CarsResourceModel;
 
 class Index extends Action
 {
+    /**
+     * @var CarsFactory
+     */
     private CarsFactory $_carsFactory;
 
     private CarsResourceModel $carsResourceModel;
 
+    /**
+     * @var ForwardFactory
+     */
+    protected ForwardFactory $_forwardFactory;
+
+    /**
+     * @var Config
+     */
     private $config;
 
     public function __construct(
         Context $context,
         CarsFactory $carsFactory,
         CarsResourceModel $carsResourceModel,
+        ForwardFactory $forwardFactory,
         Config $config
     ) {
         $this->_carsFactory = $carsFactory;
         $this->config = $config;
         $this->carsResourceModel = $carsResourceModel;
+        $this->_forwardFactory = $forwardFactory;
         parent::__construct($context);
     }
 
@@ -47,10 +61,9 @@ class Index extends Action
             $redirect->setPath('cars');
             return $redirect;
         } else {
-            //redirect to the main page
-            $redirect = $this->resultRedirectFactory->create();
-            $redirect->setPath('/');
-            return $redirect;
+            //404
+            $forward = $this->_forwardFactory->create()->forward('defaultNoRoute');
+            return $forward;
         }
     }
 }
