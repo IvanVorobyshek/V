@@ -5,7 +5,7 @@ namespace Voronin\Cars\ViewModel;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Framework\App\Request\Http\Proxy;
 use Voronin\Cars\Model\CarsFactory;
-
+use Voronin\Cars\Model\ResourceModel\Cars as CarsResourceModel;
 
 class MyViewModelCarsEdit implements ArgumentInterface
 {
@@ -16,6 +16,11 @@ class MyViewModelCarsEdit implements ArgumentInterface
     protected $_request;
 
     /**
+     * @var CarsResourceModel
+     */
+    private CarsResourceModel $carsResourceModel;
+
+    /**
      * @var CarsFactory
      */
     private CarsFactory $_carsFactory;
@@ -23,9 +28,11 @@ class MyViewModelCarsEdit implements ArgumentInterface
     public function __construct(
         Proxy $request,
         CarsFactory $carsFactory,
+        CarsResourceModel $carsResourceModel,
         array $data = []
     ) {
         $this->_request = $request;
+        $this->carsResourceModel = $carsResourceModel;
         $this->_carsFactory = $carsFactory;
     }
 
@@ -36,7 +43,7 @@ class MyViewModelCarsEdit implements ArgumentInterface
     {
         $params = $this->_request->getParams();
         $model = $this->_carsFactory->create();
-        $model->load($params['id']);
+        $this->carsResourceModel->load($model, $params['id']);
         return $model->getData();
     }
 

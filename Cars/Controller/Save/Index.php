@@ -76,7 +76,7 @@ class Index extends Action
 //                exit();
                 $model = $this->cars->setData($params);
                 $this->carsResourceModel->save($model);
-                $this->messageManager->addSuccessMessage(__('Wow! Data was added to DB.'));
+                $this->messageManager->addSuccessMessage(__('Wow! Data has been added to DB.'));
             } catch (\Exception $e) {
                 $this->messageManager->addErrorMessage(__('Something is wrong! Can\'t write data to DB!'));
             }
