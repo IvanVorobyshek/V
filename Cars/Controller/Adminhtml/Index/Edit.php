@@ -7,6 +7,7 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 use Voronin\Cars\Model\CarsFactory;
+use Voronin\Cars\Model\ResourceModel\Cars as CarsResourceModel;
 
 class Edit extends Action
 {
@@ -16,15 +17,22 @@ class Edit extends Action
 
     private $coreRegistry;
 
+    /**
+     * @var CarsResourceModel
+     */
+    private CarsResourceModel $carsResourceModel;
+
     public function __construct(
         Context $context,
         PageFactory $pageFactory,
         CarsFactory $_carsFactory,
+        CarsResourceModel $carsResourceModel,
         \Magento\Framework\Registry $coreRegistry
     ){
         $this->pageFactory = $pageFactory;
         $this->_carsFactory = $_carsFactory;
         $this->coreRegistry = $coreRegistry;
+        $this->carsResourceModel = $carsResourceModel;
         parent::__construct($context);
     }
 
@@ -36,7 +44,11 @@ class Edit extends Action
         $rowData = '';
 
         if ($rowId){
-            $rowData = $this->_carsFactory->create()->load($rowId);
+//            $rowData = $this->_carsFactory->create()->load($rowId);
+
+            $rowData = $this->_carsFactory->create();
+            $this->carsResourceModel->load($rowData, $rowId);
+            $rowData->getData();
             if(!$rowData->getId()){
                 $this->messageManager->addErrorMessage(__('Car data no longer exist.'));
                 $this->_redirect('voronin_cars/index/index');

@@ -85,7 +85,7 @@ class CarsRepository implements CarRepositoryInterface
     public function getList(SearchCriteriaInterface $searchCriteria)
     {
         /** @var CarsCollection $collection */
-        $collection = $this->CarsCollectionFactory->create();
+        $collection = $this->carsCollectionFactory->create();
         foreach ($searchCriteria->getFilterGroups() as $filterGroup) {
             foreach ($filterGroup->getFilters() as $filter) {
                 $condition = $filter->getConditionType() ? $filter->getConditionType() : 'eq';
@@ -94,7 +94,7 @@ class CarsRepository implements CarRepositoryInterface
         }
 
         /** @var CarSearchResultInterface $searchResult */
-        $searchResult = $this->CarSearchResultFactory->create();
+        $searchResult = $this->carsSearchResultFactory->create();
         $searchResult->setSearchCriteria($searchCriteria);
         $searchResult->setItems($collection->getItems());
         $searchResult->setTotalCount($collection->getSize());
@@ -127,7 +127,7 @@ class CarsRepository implements CarRepositoryInterface
     {
         try {
             /** @var Cars $car */
-            $this->CarsResource->delete($car);
+            $this->carsResource->delete($car);
             unset($this->registry[$car->getId()]);
         } catch (\Exception $e) {
             throw new StateException(__('Unable to remove post #%1', $car->getId()));

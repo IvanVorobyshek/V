@@ -15,6 +15,9 @@ class NewAction extends Action
      */
     private $pageFactory;
 
+    /**
+     * @var CarsFactory
+     */
     protected $_carsFactory;
 
     /**
